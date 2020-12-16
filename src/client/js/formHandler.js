@@ -10,10 +10,10 @@ function handleSubmit(event) {
     
     apiRun(formText)
     .then((apiData)=>{
-        console.log(apiData)
-        const agreement = document.getElementById(agreement)
-        const confidence = document.getElementById(confidence)
-        const irony = document.getElementById(irony)
+        console.log(apiData);
+        let agreement = document.getElementById('agreement')
+        let confidence = document.getElementById('confidence')
+        let irony = document.getElementById('irony')
 
         agreement.innerHTML = apiData.agreement
         confidence.innerHTML = apiData.confidence
@@ -22,26 +22,25 @@ function handleSubmit(event) {
 }
 
 const apiRun = async (formText)=> {
-    console.log(formText);
-    console.log('working');
     const req = await fetch(`http://localhost:8081/api/${formText}`)
-    console.log(req);
     try { 
         const apiData = await req.json()
-        // console.log(apiData)
         return apiData
     } catch(e) {
         console.log('error', e);
-    }
+    }}
 // .then(res => {
 //     return res.json()
 // })
 // .then(function(data) {
 //     document.getElementById('results').innerHTML = data.message
-// })}
-}
+// })
+
+document.querySelector('.form').addEventListener('submit', handleSubmit)
 
 export { handleSubmit, apiRun }
+
+
 
 /*
 , {
