@@ -4,12 +4,11 @@ function handleSubmit(event) {
     // check what text was put into the form field
     let formText = document.getElementById('name').value
 
-    Client.checkForName(formText)
+    if(Client.checkURL(formText)) {
+        console.log("::: Form Passed :::")
 
-    console.log("::: Form Submitted :::")
-    
-    apiRun(formText)
-    .then((apiData)=>{
+        apiRun(formText)
+        .then((apiData)=>{
         console.log(apiData);
         let agreement = document.getElementById('agreement')
         let confidence = document.getElementById('confidence')
@@ -19,6 +18,10 @@ function handleSubmit(event) {
         confidence.innerHTML = apiData.confidence
         irony.innerHTML = apiData.irony
     })
+    } else {
+        alert('Error: input is not a URL')
+    }
+    
 }
 
 const apiRun = async (formText)=> {
