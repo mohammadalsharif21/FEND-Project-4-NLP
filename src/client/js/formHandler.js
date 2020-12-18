@@ -25,33 +25,15 @@ function handleSubmit(event) {
 }
 
 const apiRun = async (formText)=> {
-    const req = await fetch(`http://localhost:8081/api/${formText}`)
+    const req = await fetch(`http://localhost:8081/api?formText=${formText}`)
     try { 
         const apiData = await req.json()
         return apiData
     } catch(e) {
         console.log('error', e);
     }}
-// .then(res => {
-//     return res.json()
-// })
-// .then(function(data) {
-//     document.getElementById('results').innerHTML = data.message
-// })
 
 document.querySelector('.form').addEventListener('submit', handleSubmit)
 
 export { handleSubmit, apiRun }
 
-
-
-/*
-, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formText)
-    }
-*/

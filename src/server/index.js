@@ -50,8 +50,8 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
-app.get('/api/:formText', async (req, res)=>{
-    const formText = req.params.formText
+app.get('/api', async (req, res)=>{
+    const formText = req.query.formText
     console.log(formText)
     console.log(apikey)
     const apiValue = await fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${apikey}&of=json&txt=${formText}&lang=en`, {
