@@ -33,7 +33,10 @@ const apiRun = async (formText)=> {
         console.log('error', e);
     }}
 
-document.querySelector('.form').addEventListener('submit', handleSubmit)
+
+document.addEventListener('DOMContentLoaded', ()=> {
+    document.querySelector('.form').addEventListener('submit', handleSubmit)
+})
 
 export { handleSubmit, apiRun }
 
